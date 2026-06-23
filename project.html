@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Food Order Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff6600;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+        input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #ff6600;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #e65c00;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+
+        th {
+            background: #ff6600;
+            color: white;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Food Order Form</h1>
+
+    <div class="form-row">
+        <input type="text" id="customerName" placeholder="Customer Name">
+        <input type="text" id="address" placeholder="Address">
+        <input type="text" id="orderItem" placeholder="Order Item">
+    </div>
+
+    <button onclick="submitOrder()">Submit Order</button>
+
+    <table id="orderTable">
+        <thead>
+            <tr>
+                <th>Customer Name</th>
+                <th>Address</th>
+                <th>Order Item</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+</div>
+
+<script>
+function submitOrder() {
+    let name = document.getElementById("customerName").value;
+    let address = document.getElementById("address").value;
+    let item = document.getElementById("orderItem").value;
+
+    if(name === "" || address === "" || item === "") {
+        alert("Please fill all fields!");
+        return;
+    }
+
+    let table = document.getElementById("orderTable")
+                       .getElementsByTagName("tbody")[0];
+
+    let newRow = table.insertRow();
+
+    newRow.insertCell(0).innerHTML = name;
+    newRow.insertCell(1).innerHTML = address;
+    newRow.insertCell(2).innerHTML = item;
+
+    document.getElementById("customerName").value = "";
+    document.getElementById("address").value = "";
+    document.getElementById("orderItem").value = "";
+}
+</script>
+
+</body>
+</html>
