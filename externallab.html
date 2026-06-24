@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+   <meta charset="UTF-8"/> 
+   <title>MARKS CALCULATOR </title>
+</head> 
+<style>
+  h1{
+    font-size:40px ;
+    font-weight: bold;
+  }
+  label{
+    font-size: large;
+  }
+  .container{
+    width: 1300px ;
+    height: 700px ;
+    border:7px ;
+    border-color:solid black 10px;
+    border-color:solid black;
+    padding:7px ;
+    text-align: center;
+    background-color: rgb(130, 179, 198);
+    margin-left:230px ;
+  }
+  #result{
+   margin-top:20px;
+   font-size:18px;
+  }
+  button{
+    background-color: green;
+    cursor: pointer;
+    color: white;
+  }
+  button:hover{
+    background-color: green;
+ }
+
+</style>
+<body>
+    <div class="container">
+    <h1><b>STUDENT RESULT CALCULATOR</b></h1>
+    <label for="fullname">STUDENT FULL NAME</label>
+    <input type="text" name="fullname" id="fullname">
+    <br><br>
+    <label for="subjects">ENTER NUMBER OF SUBJECTS</label>
+    <input type="number" id="subjects">
+    <br><br>
+    <label for="marks"> TOTAL MARKS</label>
+    <input type="tel" id="marks" name="marks">
+    <br><br>
+    <button onclick="calculateResult()">Calculate Result</button>
+    <div id="result"></div>
+    </div>
+    <script>
+   function calculateResult(){
+   let n = document.getElementById("subjects").value;
+   let total = 0;
+  for(let i=1;i<=n;i++)
+  {
+   let marks = parseFloat(prompt("Enter marks for Subject "+i));
+   total = total + marks;
+  }
+   let average = total / n;
+   let grade;
+   let result;
+  if(average >= 90)
+    grade = "A+";
+  else if(average >= 75)
+    grade = "A";
+  else if(average >= 60)
+    grade = "B";
+  else if(average >= 50)
+    grade = "C";
+  else
+    grade = "D";
+
+  if(average >= 40)
+    result = "PASS";
+  else
+    result = "FAIL";
+
+ document.getElementById("result").innerHTML =
+ "Total Marks: " + total + "<br>" +
+ "Average Marks: " + average.toFixed(2) + "<br>" +
+ "Grade: " + grade + "<br>" +
+ "Result: " + result;
+
+}
+
+</script>
+</body>
+</html>
